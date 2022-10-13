@@ -1,1 +1,60 @@
-<p>student works!</p>
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+        <h2 class="text-light primary py-3">PWD Management System</h2>
+
+
+        <div class="d-flex">
+            <button class="btn btn-success "data-bs-toggle="modal" data-bs-target="#exampleModal" >Add </button>&nbsp;
+            <button class="btn btn-warning">Logout</button>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Table -->
+<table class="table mt-4"> 
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">City</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Sadip</td>
+            <td>sadip10@gmail.com</td>
+            <td>01676503273</td>
+            <td>Dhaka</td>
+            <td>
+                <button class="btn btn-info "data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;
+                <button class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
