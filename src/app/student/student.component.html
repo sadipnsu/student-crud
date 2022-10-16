@@ -4,7 +4,7 @@
 
 
         <div class="d-flex">
-            <button class="btn btn-success "data-bs-toggle="modal" data-bs-target="#exampleModal" >Add </button>&nbsp;
+            <button class="btn btn-success" (click)="add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add </button>&nbsp;
             <button class="btn btn-warning">Logout</button>
         </div>
     </div>
@@ -24,15 +24,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Sadip</td>
-            <td>sadip10@gmail.com</td>
-            <td>01676503273</td>
-            <td>Dhaka</td>
+        <tr *ngFor="let list of inputArray; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{list.name}}</td>
+            <td>{{list.email}}</td>
+            <td>{{list.mobile}}</td>
+            <td>{{list.city}}</td>
+            
             <td>
-                <button class="btn btn-info "data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-info" (click)="update()" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;
+                <button class="btn btn-danger" (click)="pwdDelete()">Delete</button>
             </td>
         </tr>
 
@@ -44,16 +45,47 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <div style="background: brown;" class="modal-header">
+          <h5 style="color: aliceblue; font-size:26px; margin-left: 62px; font-weight: 620"  class="modal-title" id="exampleModalLabel">PWD Management</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <form [formGroup]="formValue">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Name</label>
+              <input type="name" formControlName="name"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+              <small *ngIf="formValue.get('name')?.invalid && formValue.get('name')?.touched" class="text-danger">Name is required</small>
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small *ngIf="formValue.get('email')?.invalid && formValue.get('email')?.touched" class="text-danger">Email is required</small>
+
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Mobile Number</label>
+              <input type="number" formControlName="mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter number">
+              <small *ngIf="formValue.get('mobile')?.invalid && formValue.get('mobile')?.touched" class="text-danger">Mobile number is required</small>
+
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="exampleInputEmail1">City</label>
+              <input type="name" formControlName="city" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter city">
+              <small *ngIf="formValue.get('city')?.invalid && formValue.get('city')?.touched" class="text-danger"> City name is required</small>
+
+            </div>
+           
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button *ngIf="showadd" type="button" (click)="addPwd()" class="btn btn-primary">Add</button>
+          <button *ngIf="showupdate" type="button" class="btn btn-success">Update</button>
         </div>
       </div>
     </div>
