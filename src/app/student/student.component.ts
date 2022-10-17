@@ -40,24 +40,23 @@ export class StudentComponent implements OnInit {
   }
 
   addPwd(){
-    this.studentmodelobj.name = this.formValue.value.name;
-    this.studentmodelobj.email = this.formValue.value.email;
-    this.studentmodelobj.mobile = this.formValue.value.mobile;
-    this.studentmodelobj.city = this.formValue.value.city;
+    let newData: studentdata = new studentdata;    
+    newData.name = this.formValue.value.name;
+    newData.email = this.formValue.value.email;
+    newData.mobile = this.formValue.value.mobile;
+    newData.city = this.formValue.value.city;
     
-    this.inputArray.push(this.studentmodelobj);
-    // this.api.postPWD(this.studentmodelobj).subscribe(res=>{
-    //   console.log(res)
-    //   alert("Record Added Successfully");
-    // },
-    // err=>{
-    //   alert('Something went wrong');
-    // }
+    this.inputArray.push(newData);
+
     
   }
 
-pwdDelete(id:number){
-    this.inputArray = this.inputArray.filter(item => item.id !== id);
+pwdDelete(element: studentdata){
+    this.inputArray.forEach((value,index)=>{
+      if(value==element){
+        this.inputArray.splice(index,1);
+      }
+    });
 }
 
   
