@@ -24,17 +24,17 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let list of inputArray; let i = index">
+        <tr *ngFor="let object of inputArray; let i = index">
             <td>{{i+1}}</td>
             <!-- <td>{{list.id}}</td> -->
-            <td>{{list.name}}</td>
-            <td>{{list.email}}</td>
-            <td>{{list.mobile}}</td>
-            <td>{{list.city}}</td>
+            <td>{{object.name}}</td>
+            <td>{{object.email}}</td>
+            <td>{{object.mobile}}</td>
+            <td>{{object.city}}</td>
             
             <td>
-                <button class="btn btn-info" (click)="update()" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;
-                <button class="btn btn-danger" (click)="pwdDelete(list)">Delete</button>
+                <button class="btn btn-info" (click)="edit(object)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;
+                <button class="btn btn-danger" (click)="pwdDelete(object)">Delete</button>
             </td>
         </tr>
 
@@ -52,6 +52,7 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="formValue">
+            <input type="hidden" name="id" formControlName="id">
             <div class="form-group">
               <label for="exampleInputEmail1">Name</label>
               <input type="name" formControlName="name"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
@@ -86,7 +87,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
           <button *ngIf="showadd" type="button" (click)="addPwd()" class="btn btn-primary">Add</button>
-          <button *ngIf="showupdate" type="button" class="btn btn-success">Update</button>
+          <button *ngIf="showupdate" type="button" (click)="pwdUpdate()" class="btn btn-success">Update</button>
         </div>
       </div>
     </div>

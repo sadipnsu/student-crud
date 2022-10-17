@@ -5,5 +5,5 @@ export class studentdata{
     email:string = '';
     mobile:string = '';
     city:string = '';
-
+  
 }
