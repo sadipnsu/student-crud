@@ -16,7 +16,6 @@ export class StudentComponent implements OnInit {
   studentmodelobj:studentdata = new studentdata;
 
   formValue! : FormGroup;
-  users: any;
   updateData: any;
   constructor(private formBuilder: FormBuilder, private api:ApiService) { }
   inputArray: studentdata[] = [];
@@ -41,6 +40,7 @@ export class StudentComponent implements OnInit {
     this.showupdate = true;
     this.studentmodelobj= data.id;
    console.log('id',data.id);
+   console.table(this.inputArray);
    
     this.formValue.controls['id'].setValue(data.id);
     this.formValue.controls['name'].setValue(data.name);
@@ -70,11 +70,17 @@ pwdDelete(element: studentdata){
 
 pwdUpdate(){
 
-  let updateData: studentdata = new studentdata;    
-  updateData.id= this.formValue.value.id;
-  console.log('kkll',updateData.id);
- let updateValue = this.inputArray.find(x=>x.id==updateData.id)
- console.log('yyy',updateValue); 
+  let id = this.formValue.value.id;
+  let newData: studentdata = new studentdata;
+  newData.id = id;
+  newData.name = this.formValue.value.name;
+  newData.email = this.formValue.value.email;
+  newData.mobile = this.formValue.value.mobile;
+  newData.city = this.formValue.value.city;
+  
+  let index = this.inputArray.findIndex(x=> x.id === id);
+  console.log(index);
+  this.inputArray[index]=newData;
 }
 
   
